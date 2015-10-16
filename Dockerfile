@@ -9,6 +9,8 @@ RUN echo "deb http://ftp.us.debian.org/debian/ wheezy main contrib non-free" > /
 
 RUN apt-get update && \
 	apt-get install -y swig imagemagick libmagick++-dev python-dev
+
+RUN git clone https://github.com/ricardocabral/iskdaemon.git
 	
 ADD iskdaemon /iskdaemon
 
