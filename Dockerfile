@@ -12,8 +12,6 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/ricardocabral/iskdaemon.git
 	
-ADD iskdaemon /iskdaemon
-
 WORKDIR /iskdaemon/src
 
 RUN python setup.py install

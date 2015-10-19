@@ -1,6 +1,6 @@
 FILES=iskdaemon
 
-all: FILES iskdaemon
+all: iskdaemon
 
 FILES:
 	if [ ! -d "./$(FILES)" ];then \
