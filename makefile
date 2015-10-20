@@ -1,6 +1,6 @@
 FILES=iskdaemon
 
-all: iskdaemon
+all: iskdaemon-db iskdaemon
 
 FILES:
 	if [ ! -d "./$(FILES)" ];then \
@@ -20,6 +20,13 @@ iskdaemon: .build
 	-@docker rm -f $@ > /dev/null
 	docker run -d --name $@ \
 		-p 31128:31128 \
+		--volumes-from iskdaemon-db \
 		-v $(HOME)/Pictures:/Pictures \
 		garyritchie/iskdaemon
 		# -v `pwd`/isk-db:/root/isk-db \
+
+iskdaemon-db:
+	-@docker rm -f $@ > /dev/null
+	docker create --name $@ \
+		-v /iskdaemon-db \
+		garyritchie/iskdaemon /bin/true

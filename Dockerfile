@@ -11,7 +11,10 @@ RUN apt-get update && \
 	apt-get install -y swig imagemagick libmagick++-dev python-dev
 
 RUN git clone https://github.com/ricardocabral/iskdaemon.git
-	
+
+# Change the config for easier data management
+RUN sed -i 's/databasePath = ~\/isk-db/databasePath = \/iskdaemon-db\/isk-db/g' /iskdaemon/src/isk-daemon.conf
+
 WORKDIR /iskdaemon/src
 
 RUN python setup.py install
